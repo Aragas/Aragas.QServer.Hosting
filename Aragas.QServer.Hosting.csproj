@@ -25,10 +25,10 @@
 
   <ItemGroup>
     <ProjectReference Include="$(SolutionDir)\Aragas.QServer.Logging\Aragas.QServer.Logging.csproj" Condition="Exists('$(SolutionDir)\Aragas.QServer.Logging\Aragas.QServer.Logging.csproj')"  />
-    <PackageReference Include="Aragas.QServer.Logging" Condition="!Exists('$(SolutionDir)\Aragas.QServer.Logging\Aragas.QServer.Logging.csproj')"/>
+    <PackageReference Include="Aragas.QServer.Logging" Version="*" Condition="!Exists('$(SolutionDir)\Aragas.QServer.Logging\Aragas.QServer.Logging.csproj')"/>
 
     <ProjectReference Include="$(SolutionDir)\Aragas.QServer.NetworkBus\Aragas.QServer.NetworkBus.csproj" Condition="Exists('$(SolutionDir)\Aragas.QServer.NetworkBus\Aragas.QServer.NetworkBus.csproj')"  />
-    <PackageReference Include="Aragas.QServer.NetworkBus" Condition="!Exists('$(SolutionDir)\Aragas.QServer.NetworkBus\Aragas.QServer.NetworkBus.csproj')"/>
+    <PackageReference Include="Aragas.QServer.NetworkBus" Version="*" Condition="!Exists('$(SolutionDir)\Aragas.QServer.NetworkBus\Aragas.QServer.NetworkBus.csproj')"/>
   </ItemGroup>
 
   <ItemGroup>
