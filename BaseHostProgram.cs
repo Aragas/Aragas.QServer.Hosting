@@ -4,6 +4,7 @@ using Aragas.QServer.NetworkBus.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging.Configuration;
 using Microsoft.Extensions.Options;
 
 using Serilog;
@@ -18,6 +19,7 @@ namespace Aragas.QServer.Hosting
         public static Guid Uid { get; } = Guid.NewGuid();
 
         public static async Task Main<TProgram>(
+            Func<LoggerConfiguration, LoggerConfiguration>? loggerConfigurationFunc = null,
             Func<IHostBuilder, IHostBuilder>? hostBuilderFunc = null,
             Action<IHost>? beforeRunAction = null,
             string[]? args = null)
@@ -49,10 +51,11 @@ namespace Aragas.QServer.Hosting
                 .AddJsonFile("loggerconfig.json", false)
                 .AddJsonFile($"loggerconfig.{env}.json", true)
                 .Build();
-            Log.Logger = new LoggerConfiguration()
+            var loggerConfiguration = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
-                .Enrich.WithApplicationInfo(Uid)
-                .CreateLogger();
+                .Enrich.WithApplicationInfo(Uid);
+            loggerConfigurationFunc?.Invoke(loggerConfiguration);
+            Log.Logger = loggerConfiguration.CreateLogger();
 
             try
             {
