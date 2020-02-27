@@ -7,7 +7,7 @@ namespace Microsoft.Extensions.Hosting
         public static IHostBuilder CreateDefaultBuilder(string[]? args = null, Guid? uid = null)
         {
             var host = Host.CreateDefaultBuilder(args ?? Array.Empty<string>())
-                .UseSerilog()
+                .UseLogging()
                 .UseNATSNetworkBus()
                 .UseMetricsWithDefault()
                 .UseHealthChecks();
