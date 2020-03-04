@@ -9,6 +9,12 @@ on:
       - build-from-external
 
 jobs:
+  build-from-external:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{github.event.client_payload.github.repository}}
+        
   build:
     runs-on: ubuntu-latest
     steps:
