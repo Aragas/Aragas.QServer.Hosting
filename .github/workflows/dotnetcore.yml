@@ -13,14 +13,14 @@ jobs:
     name: Requested by Push
     needs: build
     runs-on: ubuntu-latest
-    if: github.event.push.ref != ''
+    if: github.event_name == 'push'
     steps:
     - run: echo
   build-from-external:
     name: Requested by ${{github.event.client_payload.github.repository}}
     needs: build
     runs-on: ubuntu-latest
-    if: github.event.repository_dispatch.integration
+    if: github.event_name == 'repository_dispatch'
     steps:
     - run: echo
         
