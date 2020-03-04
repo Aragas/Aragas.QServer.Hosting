@@ -2,17 +2,25 @@ name: NuGet
 
 on:
   push:
-    branches: 
+    branches:
       - master
   repository_dispatch:
     types:
       - build-from-external
 
 jobs:
-  build-from-external:
-    name: Requested by ${{test:-github.event.client_payload.github.repository}}
+  build-from-push:
+    name: Requested by Push
     needs: build
     runs-on: ubuntu-latest
+    if: github.event.push.ref != ''
+    steps:
+    - run: echo
+  build-from-external:
+    name: Requested by ${{github.event.client_payload.github.repository}}
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event.repository_dispatch.integration
     steps:
     - run: echo
         
