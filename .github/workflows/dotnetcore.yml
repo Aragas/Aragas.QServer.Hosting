@@ -10,10 +10,8 @@ on:
 
 jobs:
   build-from-external:
-    needs: build
+    name: Requested by ${{github.event.client_payload.github.repository}}
     runs-on: ubuntu-latest
-    steps:
-      - run: echo ${{github.event.client_payload.github.repository}}
         
   build:
     runs-on: ubuntu-latest
