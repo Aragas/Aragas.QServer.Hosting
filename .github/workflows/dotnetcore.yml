@@ -44,7 +44,7 @@ jobs:
     - name: Trigger Aragas.QServer.Core
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{secrets.GITHUB_TOKEN}}
+        token: ${{secrets.GITHUB_TOKEN_REPO}}
         repository: Aragas/Aragas.QServer.Core
         event-type: build
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
