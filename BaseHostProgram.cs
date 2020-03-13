@@ -59,7 +59,7 @@ namespace Aragas.QServer.Hosting
 
             try
             {
-                Log.Information("{TypeName}: Starting.", typeof(TProgram).FullName);
+                Log.Information("Starting.", typeof(TProgram).FullName);
 
                 var hostBuilder = QServerHost.CreateDefaultBuilder(args ?? Array.Empty<string>(), Uid);
                 hostBuilderFunc?.Invoke(hostBuilder);
@@ -73,12 +73,12 @@ namespace Aragas.QServer.Hosting
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "{TypeName}: Fatal exception.", typeof(TProgram).FullName);
+                Log.Fatal(ex, "Fatal exception.", typeof(TProgram).FullName);
                 throw;
             }
             finally
             {
-                Log.Information("{TypeName}: Stopped.", typeof(TProgram).FullName);
+                Log.Information("Stopped.", typeof(TProgram).FullName);
                 Log.CloseAndFlush();
             }
         }
