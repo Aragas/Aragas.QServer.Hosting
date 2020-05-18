@@ -18,6 +18,10 @@
     <PackageIconUrl>https://github.com/Aragas/Aragas.QServer.Hosting/raw/master/spiral.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Aragas/Aragas.QServer.Hosting</PackageProjectUrl>
   </PropertyGroup>
+   
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
